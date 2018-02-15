@@ -1,6 +1,6 @@
-docker service create \
+docker service create -d \
 	--name orbital-command \
 	-e RABBITMQ_DEFAULT_USER=doctor \
 	-e RABBITMQ_DEFAULT_PASS=carrot \
 	--network overmind \
-	rabbitmq
+	rabbitmq:latest

@@ -1,1 +1,1 @@
-docker logs engineering-bay.2.<id-name> -f
+docker service logs -f engineering-bay

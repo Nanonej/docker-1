@@ -1,8 +1,13 @@
-docker run -it -d -v "$HOME/flask-docker:/root" -w /root -p 3000:3000 --name Abathur python:2-slim
+docker run -it -d \
+	-v "$HOME/flask-docker:/root" \
+	-w /root \
+	-p 3000:3000 \
+	--name Abathur \
+	python:2-slim
+
 docker exec -it Abathur bash
-cd
-cat << EOF > app.py
-from flask import Flask
+
+echo '''from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
@@ -10,10 +15,11 @@ def hello():
     return "<html><h1>Hello World<h1><html>"
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=3000)
-EOF
-cp -rf . /app
-cd /app
+    app.run(host="0.0.0.0", port=3000)''' > app.py
+cp -rf . /app ; cd /app
 apt-get update -y
+apt-get upgrade -y
 pip install Flask
-python app.py
+exit
+
+docker exec -d Abathur bash -c 'python app.py'

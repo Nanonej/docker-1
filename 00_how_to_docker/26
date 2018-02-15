@@ -1,7 +1,7 @@
-docker service create \
+docker service create -d \
 	--replicas 2 \
 	--name engineering-bay \
 	-e OC_USERNAME=doctor \
 	-e OC_PASSWD=carrot \
 	--network overmind \
-	42school/engineering-bay
+	42school/engineering-bay:latest
