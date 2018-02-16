@@ -1,8 +1,8 @@
-FROM debian
+FROM debian:latest
 
 RUN apt-get update && apt-get install -y \
-	wget \
-	bzip2
+	bzip2 \
+	wget
 
 WORKDIR /root
 
