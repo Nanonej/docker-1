@@ -1,4 +1,4 @@
 docker network create \
 	--driver overlay \
-	--opt encrypted=true \
+	--internal \
 	overmind
